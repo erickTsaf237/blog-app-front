@@ -1,0 +1,27 @@
+
+
+<div class="container">
+<div class="row" >
+    <div class="col s12 m7 center" *ngFor="let album of albums">
+        <div class="card" (click)="goToAlbumSpace(album.id)">
+            <div class="card-image">
+                <img src="vide.ico" [alt]="album.title">
+                <span class="card-title">{{album.title}}</span>
+            </div>
+            <div class="card-content">
+                <p>
+                    {{album.description}}
+
+                </p>
+            </div>
+            <div class="card-action">
+                <a href="#" (click)="affiche()">{{album.user.firstname+" "+album.user.lastname}}</a>
+                <br>
+                <span>
+                    last modification: {{album.updatedAt| date:"dd/mm/yy"}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
