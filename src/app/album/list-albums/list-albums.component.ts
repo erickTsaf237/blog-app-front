@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Albums} from "../albums";
 import {AlbumService} from "../album.service";
+import {PostService} from "../../post/post.service";
+import {ActivatedRoute, Router, Routes} from "@angular/router";
 
 @Component({
   selector: 'app-list-albums',
@@ -10,9 +12,11 @@ import {AlbumService} from "../album.service";
 export class ListAlbumsComponent implements OnInit {
 
   albums:Albums[]
-  constructor(private albumService: AlbumService) { }
+  curentAlbum: Albums
+  constructor(private albumService: AlbumService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+      const AlbumId = (this.route.snapshot).paramMap.get('id')
     this.albumService.getAlbumList()
         .subscribe(result=> {
           console.log(result)
@@ -21,11 +25,21 @@ export class ListAlbumsComponent implements OnInit {
 
   }
 
-    goToAlbumSpace(id: string) {
-        alert(`Il s'agit de l'album identifier au ${id}`)
+    goToAlbumSpace(alBumId: number) {
+        alert("je ne vous dis pas \n je ne vous dis pas")
+        this.router.navigate([`/post/post/`, alBumId])
+        // this.curentAlbum = album
+        // const post_list = document.getElementById("post-list")
+        // if(post_list !== null)
+        //     post_list.innerHTML
+
     }
 
     affiche() {
         alert("prendre quelque chose")
+    }
+
+    setPost(){
+
     }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, tap} from "rxjs";
 import {Albums} from "./albums";
+import {PostService} from "../post/post.service";
 
 
 
@@ -16,7 +17,7 @@ export class Message{
 })
 export class AlbumService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private postService: PostService) { }
 
   log(result:any){
     console.table(result)
@@ -42,5 +43,7 @@ export class AlbumService {
         })
     )
   }
+
+
 
 }

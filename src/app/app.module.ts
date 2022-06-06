@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import {AlbumModule} from "./album/album.module";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {HttpClientModule} from "@angular/common/http";
+import { PictureComponent } from './picture/picture.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PictureComponent,
   ],
   imports: [
     BrowserModule,
