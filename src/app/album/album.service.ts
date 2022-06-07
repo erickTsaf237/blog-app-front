@@ -3,12 +3,13 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, tap} from "rxjs";
 import {Albums} from "./albums";
 import {PostService} from "../post/post.service";
+import {Picture} from "../picture/picture";
 
 
 
 
 export class Message{
-    constructor(private message:string, private data: Albums|Albums[]|undefined) {
+    constructor(private message:string, private data: Albums|Albums[]|Picture|undefined) {
     }
 }
 

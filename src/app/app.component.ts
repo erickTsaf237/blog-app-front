@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  constructor(private router: Router) {
+  }
+
   text: string | undefined
   title = 'gn-app-test';
 
   doChange() {
     console.log("boooooo")
+  }
+
+  goHome() {
+    this.router.navigate(['albums']).catch(()=>alert('chemin inconnu'))
+  }
+
+  goToFriend() {
+    this.router.navigate(['friends']).catch(()=>alert('chemin inconnu'))
   }
 }

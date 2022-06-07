@@ -10,6 +10,7 @@ export class Post{
     createdAt: Date
     updatedAt: Date
     picture: Picture
+    comment: boolean=false
 
 
 

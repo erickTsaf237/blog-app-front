@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {Post} from "../Posts";
 import {PostService} from "../post.service";
 import {Albums} from "../../album/albums";
+import {Possesses} from "../Possess";
 
 @Component({
   selector: 'app-list-posts',
@@ -10,25 +11,47 @@ import {Albums} from "../../album/albums";
 })
 export class ListPostsComponent implements OnInit, OnChanges {
 
-  public posts: Post[]|undefined = undefined
-
-  albumId: number
+  public posts: Post[]|undefined = undefined;
+  numbers: number[] = [5, 8, 9, 7, 122, 6, 9]
+  @Input()albumId: number
 
   constructor(private postService: PostService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("moi j'ai bien vu comment le truc ci a changé")
-
-    alert("moi j'ai bien vu comment le truc ci a changé")
-        throw new Error('Method not implemented.');
+      this.afficheToutLesPost()
   }
 
   ngOnInit(): void {
-    console.log('je ne suis pas soul')
-    this.postService.getAllPost(this.albumId).subscribe()
+    this.afficheToutLesPost()
+  }
+
+  afficheToutLesPost(){
+      if (this.albumId !== -1) {
+          this.postService.getAllPost(this.albumId).subscribe(
+              posts => {
+                  this.posts = posts.data.map((possesses: Possesses) => possesses.poste)
+                  console.log('la taille est :' + this.posts?.length)
+              }
+          )
+      }
+      else
+          this.posts = undefined
   }
 
 
+  goToAlbumSpace(id: number) {
 
+  }
+
+    clickLike(postId: number, userId: number) {
+
+    }
+
+    addComment(post: Post) {
+        post.comment = !post.comment
+        if (!post.comment){
+            alert("on envoie le message")
+        }
+    }
 }

@@ -19,8 +19,6 @@ export class PostService {
     // this.http.get<Message>(``)
     return this.http.get<any>(`${API_ROOT}/possess/album/${albumId}`).pipe(
         tap(response=>{
-            console.log('')
-          console.log(response)
           return response.data.poste
         })
         ,catchError((error)=>{

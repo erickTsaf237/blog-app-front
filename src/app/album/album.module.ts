@@ -5,14 +5,15 @@ import { ListAlbumsComponent } from './list-albums/list-albums.component';
 import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
 import {ListPostsComponent} from "../post/list-posts/list-posts.component";
 import {PostModule} from "../post/post.module";
+import {Picture} from "../picture/picture";
+import {PictureComponent} from "../picture/picture.component";
 
 
 const albumRoutes: Routes = [
-  {path: 'albums/post/:id', component: ListPostsComponent},
+  {path: 'albums/:id', component: ListAlbumsComponent},
   {path:'albums', component:ListAlbumsComponent},
   {path: '', redirectTo:'albums', pathMatch:'full'},
-
-    {path: '**', component: PageNotFoundComponent}
+  // {path: '**', component: PageNotFoundComponent}
 
 ]
 

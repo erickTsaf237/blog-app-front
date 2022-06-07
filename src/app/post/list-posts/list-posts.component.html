@@ -1,5 +1,56 @@
 
 
-<div *ngFor="let post of posts">
-    {{post}}
-</div>
+
+
+
+
+
+    <div class="col s8 m7 right" *ngIf="posts !== undefined">
+        <div class="col" *ngFor="let post of posts">
+            <div class="card" (click)="goToAlbumSpace(post.id)">
+                <app-picture [pictureId]="albumId" [pictureClass]="'circle responsive-img'"></app-picture>
+                <div class="card-content">
+                    <p>
+                        {{post?.text}}
+                    </p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Names</a>
+                    <br>
+                    <small>
+                        last modification: {{post?.updatedAt| date:"dd/mm/yy-h/m/s"}}
+                    </small>
+                </div>
+                <div class="center">
+                    <div class="ui comments">
+                        <div class="comment">
+                            <div class="content">
+                                <form class="ui reply form">
+                                    <div class="field" *ngIf="post?.comment">
+                                        <textarea style="height: 5px" class="grey lighten-4" placeholder="Write your comment Here"></textarea>
+                                    </div>
+                                    <div class="ui primary submit labeled icon button" (click)="addComment(post)">
+                                        <i class="icon edit"></i> Add Reply
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="posts.length == 0">
+            The Album you selected is empty
+        </div>
+
+    </div>
+
+    <div class="col s8 m7 right" *ngIf="posts == null">
+        <h3 class="center"> Click on one album on the left</h3>
+    </div>
+    <a class="btn-floating btn-large  waves-effect waves-light teal"
+       style="bottom: 25px; position: fixed; right: 30px">
+        <i class="material-icons">add</i>
+    </a>
+
+
