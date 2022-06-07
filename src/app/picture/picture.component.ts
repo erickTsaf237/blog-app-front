@@ -9,7 +9,9 @@ import {Message, PictureService} from "./picture.service";
 export class PictureComponent implements OnInit {
   @Input()pictureId: number;
   @Input()pictureClass: string;
+  @Input()pictureStyle: string;
   picture: Picture | undefined;
+  voir: boolean= false
 
     constructor(private pictureSevice: PictureService) { }
 
@@ -23,4 +25,10 @@ export class PictureComponent implements OnInit {
 
   }
 
+    lookThePicture() {
+        this.voir = true
+    }
+  closeThePicture(){
+    this.voir = false
+  }
 }

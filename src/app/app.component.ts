@@ -18,7 +18,9 @@ export class AppComponent {
     console.log("boooooo")
   }
 
+
   goHome() {
+    // document.getElementById('home-link').style.backgroundColor = "red"
     this.router.navigate(['albums']).catch(()=>alert('chemin inconnu'))
   }
 

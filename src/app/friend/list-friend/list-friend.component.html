@@ -1,13 +1,17 @@
-<div class="row">
-    <div class="row">
-        <div class="col s12 m8 offset-m2 l6 offset-l3" *ngFor="let oneUser of users">
-            <div class="card-panel grey lighten-5 z-depth-1">
-                <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <!--<img src="" alt="" class="circle responsive-img">-->
-                        <app-picture [pictureId]="oneUser.id_picture"  [pictureClass]="'circle responsive-img'"></app-picture>
+
+
+
+<div class="row m5 s5">
+    <div class="col m5 s5" style="height: 320px ;overflow: auto; padding: 2px; margin: 2px">
+        <h3 class="center">Friends list </h3>
+        <div class="row s5 m5 offset-m2 l6 offset-l3" *ngFor="let oneUser of users" style=" padding: 0; margin: 0" (click)="GoBackOme(oneUser.id)">
+            <div class="card-panel grey lighten-5 z-depth-1" style=" padding: 0; margin: 0">
+                <div class="row valign-wrapper" style=" padding: 2px; margin: 2px">
+                    <div class="col m3 s3">
+<!--                        <img src="" alt="" class="circle responsive-img m1 l1" style="height: 15px; width: 15px">-->
+                        <app-picture [pictureId]="oneUser.id_picture"  [pictureClass]="'circle responsive-img'" [pictureStyle]="'height: 35px; width: 35px'"></app-picture>
                         <!-- notice the "circle" class --> </div>
-                    <div class="col s10"><span class="black-text"> {{oneUser.firstname +" "+ oneUser.lastname}} </span>
+                    <div class="col s10"> <span class="black-text" > {{oneUser.firstname +" "+ oneUser.lastname}} </span>
                     </div>
                 </div>
             </div>

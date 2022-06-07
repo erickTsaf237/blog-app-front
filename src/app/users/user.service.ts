@@ -12,8 +12,9 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(by: number, hbr: number=15): Observable<any>{
-      return this.http.get(`${API_ROUTE}/:by/:nbr`).pipe(
+  getUsers(limit: number=10, offset: number=0): Observable<any>{
+      return this.http.get(`${API_ROUTE}/${limit}/${offset}`).pipe(
+
           tap(result => {
               console.table(result);
           }),
@@ -21,6 +22,7 @@ export class UserService {
               console.error(err);
               return of(err);
           })
+
       );
   }
 }

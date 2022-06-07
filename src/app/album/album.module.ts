@@ -11,6 +11,7 @@ import {PictureComponent} from "../picture/picture.component";
 
 const albumRoutes: Routes = [
   {path: 'albums/:id', component: ListAlbumsComponent},
+    {path: 'albums/user/:id', component:ListAlbumsComponent},
   {path:'albums', component:ListAlbumsComponent},
   {path: '', redirectTo:'albums', pathMatch:'full'},
   // {path: '**', component: PageNotFoundComponent}
