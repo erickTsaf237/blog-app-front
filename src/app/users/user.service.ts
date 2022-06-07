@@ -25,17 +25,4 @@ export class UserService {
 
       );
   }
-  getoneUserById(userId: number){
-      return this.http.get(`${API_ROUTE}/`).pipe(
-
-          tap(result => {
-              console.table(result);
-          }),
-          catchError(err => {
-              console.error(err);
-              return of(err);
-          })
-
-      );
-  }
 }
