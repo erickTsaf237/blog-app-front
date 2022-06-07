@@ -4,7 +4,7 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'album', pathMatch:'full'},
+  {path: '', redirectTo: 'album/', pathMatch:'full'},
   {path: '**', component: PageNotFoundComponent}
 
 ];

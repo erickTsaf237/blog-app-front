@@ -11,7 +11,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ListAlbumsComponent implements OnInit {
 
   albums:Albums[]
-  curentAlbumId: number
+  curentAlbumId: number;
+  curentUserId: number|null
 
   constructor(private albumService: AlbumService, private router: Router, private route: ActivatedRoute) { }
 
@@ -19,9 +20,7 @@ export class ListAlbumsComponent implements OnInit {
     this.ajustPostContence()
   }
 
-  ajustPostContence(){
-      let albumId = (this.route.snapshot).paramMap.get('id')
-      // alert(albumId)
+  isPost(albumId: string|null){
       console.log("l'identifieant vaut "+albumId)
 
       if (albumId) {
@@ -36,11 +35,37 @@ export class ListAlbumsComponent implements OnInit {
               this.albums = result.data
           })
       console.log(this.curentAlbumId)
+  }
+
+  isUser(userId: string|null){
+      if (userId){
+          this.curentAlbumId = -2
+          // this.albumService.getAlbumList(userId)
+          //     .subscribe(result => {
+          //         console.log(result)
+          //         this.albums = result.data
+          //     })
+      }
+
+  }
+  ajustPostContence(){
+      let getId = (this.route.snapshot).paramMap.get('id')
+      let page = (this.route.snapshot).paramMap.get('page')
+      if(page ==='post'){
+            this.isPost(getId)
+      }
+      else if (page ==='user'){
+          this.curentUserId = +(this.route.snapshot).paramMap.get('userid')!
+          this.curentAlbumId = -2
+        // this.isUser()
+      }
+      else
+          this.router.navigate([''])
 
   }
 
     goToAlbumSpace(alBumId: number) {
-        this.router.navigate([`/albums/`, alBumId])
+        this.router.navigate([`/albums/post/`, alBumId])
             .then(()=>{
                 this.ajustPostContence()
             })
